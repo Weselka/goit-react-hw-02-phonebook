@@ -1,12 +1,12 @@
 export const ContactForm = ({ onSubmit }) => {
   const handleSubmit = e => {
+    const { name, number } = e.target.elements;
     e.preventDefault();
-    console.log(e.ta)
+    console.log(name.value, number.value);
+    onSubmit(name.value, number.value);
   }
   return (
-    <form
-    onSubmit={handleSubmit}
-    >
+    <form onSubmit={handleSubmit}>
       <label
       // htmlFor={this.nameInputId}
       >
