@@ -1,5 +1,5 @@
 import { Component } from 'react';
-// import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid';
 
 import {
   Heading,
@@ -10,21 +10,21 @@ import {
 } from 'components';
 
 export class App extends Component {
-  // static defoultProps = {
-  //   initialContacts: [],
-  // };
+  static defaultProps = {
+    initialContacts: [],
+  };
   // static propTypes = {};
 
   state = {
-    // contacts: this.props.initialContacts,
-    contacts: [],
+    contacts: this.props.initialContacts,
+    filter: '',
     name: '',
     number: '',
   };
 
   addContact = (name, number)  => {
     this.setState(prevState => ({
-      contacts: [...prevState.contacts, { name, number }],
+      contacts: [...prevState.contacts, { id: nanoid(), name, number }],
     }));
   };
 
@@ -51,11 +51,11 @@ export class App extends Component {
   //   console.log(data);
   // };
 
-  // deleteContact = contactId => {
-  //   this.setState(prevState => ({
-  //     contacts: prevState.contacts.filter(contact => contact.id !== contactId),
-  //   }));
-  // };
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
 
   render() {
     const { contacts } = this.state;
@@ -64,15 +64,16 @@ export class App extends Component {
         <Heading marginBottom="50px" textAlign="center">
           Phonebook
         </Heading>
-        <Section>
-          {/* <Form contacts={contacts} ondeleteContact={this.deleteContact} /> */}
-          <ContactForm
-            onSubmit={this.addContact}
+        <Section>          
+          <ContactForm onSubmit={this.addContact}
             // onSubmit={this.formSubmitHandler}
           />
-          {/* {contacts.length > 0 && */}
-          <ContactList items={contacts}></ContactList>
-          {/* } */}
+          {contacts.length > 0 &&
+          <ContactList
+            items={contacts}
+            onDelete={this.deleteContact}
+          ></ContactList>
+          }
         </Section>
       </Container>
     );
