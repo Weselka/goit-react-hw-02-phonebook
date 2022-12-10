@@ -4,3 +4,4 @@ export * from 'components/Section/Section.styled.js';
 export * from 'components/Heading/Heading.styled.js';
 export * from 'components/ContactForm/ContactForm.js';
 export * from 'components/ContactList/ContactList.js';
+export * from 'components/Contact/Contact.js';
