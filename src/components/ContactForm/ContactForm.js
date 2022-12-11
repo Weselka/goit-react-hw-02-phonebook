@@ -13,10 +13,7 @@ export class ContactForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    // console.log(this.state);
-
     this.props.onSubmit(this.state);
-    
     this.reset();
   };
 
@@ -24,23 +21,16 @@ export class ContactForm extends Component {
     this.setState({ name: '', number: '' });
   };
 
-  // const handleSubmit = e => {
-  //   const { name, number } = e.target.elements;
-  //   e.preventDefault();
-  //   console.log(name.value, number.value);
-  //   onSubmit(name.value, number.value);
-  // };
   render() {
+    const { name, number } = this.state;
+    
     return (
       <form onSubmit={this.handleSubmit}>
-        <label
-        // htmlFor={this.nameInputId}
-        >
+        <label>
           Name
           <input
-            value={this.state.name}
+            value={name}
             onChange={this.handleChange}
-            // id={this.nameInputId}
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -48,14 +38,11 @@ export class ContactForm extends Component {
             required
           />
         </label>
-        <label
-        // htmlFor={this.nameInputId}
-        >
+        <label>
           Number
           <input
-            value={this.state.number}
+            value={number}
             onChange={this.handleChange}
-            // id={this.nameInputId}
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
