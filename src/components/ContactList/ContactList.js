@@ -1,19 +1,19 @@
 import PropTypes from 'prop-types';
-
 import { Contact } from 'components';
+import { BoardContacts, ContactsItem } from './ContactList.styled';
 
 export const ContactList = ({ items, onDelete }) => {
   console.log(items);
   return (
-    <ul>
+    <BoardContacts>
       {items.map(item => {
         return (
-          <li key={item.id}>
+          <ContactsItem key={item.id}>
             <Contact contact={item} onDelete={onDelete}></Contact>
-          </li>
+          </ContactsItem>
         );
       })}
-    </ul>
+    </BoardContacts>
   );
 };
 

@@ -68,16 +68,16 @@ export class App extends Component {
           Phonebook
         </Heading>
         <Section>
-          <ContactForm onSubmit={this.addContact} />
+            <ContactForm onSubmit={this.addContact} />
         </Section>
         <Section title={'Contacts'}>
-          <Filter value={filter} onChange={this.changesFilter}></Filter>
-          {contacts.length > 0 && (
-            <ContactList
-              items={visibleContacts}
-              onDelete={this.deleteContact}
-            ></ContactList>
-          )}
+            <Filter value={filter} onChange={this.changesFilter}></Filter>
+            {contacts.length > 0 && (
+              <ContactList
+                items={visibleContacts}
+                onDelete={this.deleteContact}
+              ></ContactList>
+            )}
         </Section>
       </Container>
     );
