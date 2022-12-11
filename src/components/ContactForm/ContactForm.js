@@ -1,6 +1,14 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export class ContactForm extends Component {
+  static propTypes = {
+    contacts: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    }),
+  };
+
   state = {
     name: '',
     number: '',
@@ -23,7 +31,7 @@ export class ContactForm extends Component {
 
   render() {
     const { name, number } = this.state;
-    
+
     return (
       <form onSubmit={this.handleSubmit}>
         <label>

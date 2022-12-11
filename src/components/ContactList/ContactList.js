@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { Contact } from 'components';
 
@@ -17,7 +17,8 @@ export const ContactList = ({ items, onDelete }) => {
   );
 };
 
-// FeedbackOptions.propTypes = {
-//   options: PropTypes.array.isRequired,
-//   onLeaveFeedback: PropTypes.func.isRequired,
-// };
+ContactList.propTypes = {
+  contacts: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+  }),
+};

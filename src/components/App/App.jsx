@@ -20,7 +20,6 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
   };
-  // static propTypes = {};
 
   state = {
     contacts: this.props.initialContacts,
@@ -71,7 +70,7 @@ export class App extends Component {
         <Section>
           <ContactForm onSubmit={this.addContact} />
         </Section>
-        <Section title="Contacts">
+        <Section title={'Contacts'}>
           <Filter value={filter} onChange={this.changesFilter}></Filter>
           {contacts.length > 0 && (
             <ContactList
